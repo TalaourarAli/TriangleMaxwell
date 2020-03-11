@@ -75,7 +75,7 @@ void writeLMSletters(Mat& img) {
         Scalar(0)
     );        
     putText(img, "S(B)",
-        S + Point2d(-20, 10),
+        S + Point2d(-30, 10),
         FONT_ITALIC,
         0.5,
         Scalar(0)
@@ -113,7 +113,8 @@ void showImg(Mat& img, const char title[]) {
 #ifdef DEBUG
             cout << "v.x = " << v.x << " and v.y = " << v.y << endl << "img.size = " << img.size << endl;
 #endif // DEBUG
-            test.at<uchar>(ceil(v->y), ceil(v->x)) = 0;
+
+            if(test.at<uchar>(ceil(v->y), ceil(v->x))>=0 ) test.at<uchar>(ceil(v->y), ceil(v->x)) -= 10;
         }
     if (test.data) imshow(title, test);
 }
